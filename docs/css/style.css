@@ -613,21 +613,14 @@ section + section {
   color: var(--text-secondary);
 }
 
-.footer-author {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.footer-author a {
-  color: var(--accent);
-  font-weight: 500;
-}
-
 .footer-copyright {
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.footer-copyright a {
+  color: var(--accent);
 }
 
 .footer-built {
