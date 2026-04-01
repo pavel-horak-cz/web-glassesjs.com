@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — GlassesJS</title>
+  <meta name="robots" content="noindex">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 40'%3E%3Cellipse cx='16' cy='20' rx='13' ry='12' fill='none' stroke='%2310b981' stroke-width='3'/%3E%3Cellipse cx='48' cy='20' rx='13' ry='12' fill='none' stroke='%2310b981' stroke-width='3'/%3E%3Cpath d='M29 18c1.5-2.5 4.5-2.5 6 0' fill='none' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M3 18H3.5' stroke='%2310b981' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M60.5 18H61' stroke='%2310b981' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0e17;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .wrap {
+      max-width: 480px;
+    }
+
+    .glasses-icon {
+      color: #10b981;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+    }
+
+    h1 {
+      font-size: 6rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #10b981, #064e3b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #e2e8f0;
+    }
+
+    p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #10b981;
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+
+    a.btn:hover {
+      opacity: 0.9;
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <svg class="glasses-icon" width="100" height="50" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="16" cy="20" rx="13" ry="12" stroke="currentColor" stroke-width="3"/>
+      <ellipse cx="48" cy="20" rx="13" ry="12" stroke="currentColor" stroke-width="3"/>
+      <path d="M29 18c1.5-2.5 4.5-2.5 6 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M3 18H3.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M60.5 18H61" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <!-- "Crack" in left lens -->
+      <path d="M13 14l3 6-2 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+    </svg>
+
+    <h1>404</h1>
+    <h2>Can't see this page</h2>
+    <p>Looks like this page doesn't exist — even with glasses on.</p>
+    <a href="/" class="btn">← Back to GlassesJS</a>
+  </div>
+
+</body>
+</html>
