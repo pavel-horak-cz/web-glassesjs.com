@@ -69,7 +69,9 @@ const i18n = {
 
     // Footer
     footerLicense: 'MIT License',
-    footerAuthor: 'Pavel Horak / MELIORO Systems',
+    footerCreatedBy: 'Created by',
+    footerMoreProjects: 'More projects',
+    footerCopyright: '\u00A9 2026 Pavel Horak / MELIORO Systems. All rights reserved.',
     footerBuilt: 'Built with math, not AI.',
   },
 
@@ -137,7 +139,9 @@ const i18n = {
 
     // Footer
     footerLicense: 'MIT Licence',
-    footerAuthor: 'Pavel Horak / MELIORO Systems',
+    footerCreatedBy: 'Vytvořil',
+    footerMoreProjects: 'Další projekty',
+    footerCopyright: '\u00A9 2026 Pavel Horak / MELIORO Systems. Všechna práva vyhrazena.',
     footerBuilt: 'Postaveno na matematice, ne na AI.',
   },
 };
