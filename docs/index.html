@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlassesJS — Zero-model glasses detection for the browser</title>
+  <meta name="description" content="Detect whether a person is wearing glasses using webcam video and facial landmarks. No AI models, no server, no dependencies — pure math.">
+  <meta name="author" content="Pavel Horak / MELIORO Systems">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GlassesJS — Zero-model glasses detection">
+  <meta property="og:description" content="Detect glasses using webcam and facial landmarks. No AI, no server — pure math in the browser.">
+  <meta property="og:url" content="https://glassesjs.com">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────── -->
+
+  <nav class="nav">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">👓</span>
+        GlassesJS
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#demo" data-i18n="navDemo">Live Demo</a></li>
+        <li><a href="#how-it-works" data-i18n="navHow">How It Works</a></li>
+        <li><a href="#api" data-i18n="navApi">API</a></li>
+        <li><a href="#install" data-i18n="navInstall">Install</a></li>
+        <li><a href="https://github.com/melioro/glassesjs" target="_blank" rel="noopener">GitHub</a></li>
+        <li>
+          <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" data-lang="cs" onclick="setLang('cs')">CZ</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────────────────── -->
+
+  <section class="hero">
+    <div class="container">
+      <h1><span class="accent">Glasses</span>JS</h1>
+      <p class="hero-tagline" data-i18n="heroTagline">Zero-model glasses detection for the browser</p>
+      <p class="hero-description" data-i18n="heroDescription">Detect whether a person is wearing glasses using webcam video and facial landmarks. No AI models, no server, no dependencies — pure math.</p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary" data-i18n="heroDemo">Try Live Demo</a>
+        <code class="btn-copy" onclick="navigator.clipboard.writeText('npm install glassesjs')">npm install glassesjs</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Live Demo ───────────────────────────────────────────────── -->
+
+  <section id="demo">
+    <div class="container">
+      <h2 data-i18n="demoTitle">Live Demo</h2>
+      <p style="color: var(--text-secondary);" data-i18n="demoDescription">Enable your webcam to see real-time glasses detection with confidence score and per-method breakdown.</p>
+
+      <div class="demo-container">
+        <!-- Video -->
+        <div class="demo-video-wrap">
+          <video id="demo-video" playsinline muted style="display: none;"></video>
+          <div id="demo-placeholder" class="demo-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.5-1.632z"/>
+            </svg>
+            <p id="demo-status" style="display: none;"></p>
+          </div>
+
+          <div style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem;">
+            <button id="demo-start-btn" class="btn btn-primary" data-i18n="demoStart">Start Webcam</button>
+            <button id="demo-stop-btn" class="btn btn-secondary" style="display: none;" data-i18n="demoStop">Stop</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="demo-results">
+          <div id="demo-result-main" class="demo-result-main">
+            <div id="result-icon" class="result-icon">—</div>
+            <div id="result-label" class="result-label"></div>
+            <div id="result-confidence" class="result-confidence">—</div>
+            <div id="result-frames" class="result-frames"></div>
+          </div>
+
+          <div class="demo-methods">
+            <div class="method-row">
+              <span class="method-name">Bridge</span>
+              <div class="method-bar-wrap"><div id="bar-bridge" class="method-bar"></div></div>
+              <span id="score-bridge" class="method-score">0</span>
+            </div>
+            <div class="method-row">
+              <span class="method-name">Temple</span>
+              <div class="method-bar-wrap"><div id="bar-temple" class="method-bar"></div></div>
+              <span id="score-temple" class="method-score">0</span>
+            </div>
+            <div class="method-row">
+              <span class="method-name">Iris</span>
+              <div class="method-bar-wrap"><div id="bar-iris" class="method-bar"></div></div>
+              <span id="score-iris" class="method-score">0</span>
+            </div>
+            <div class="method-row">
+              <span class="method-name">Depth</span>
+              <div class="method-bar-wrap"><div id="bar-depth" class="method-bar"></div></div>
+              <span id="score-depth" class="method-score">0</span>
+            </div>
+            <div class="method-row">
+              <span class="method-name">Contrast</span>
+              <div class="method-bar-wrap"><div id="bar-contrast" class="method-bar"></div></div>
+              <span id="score-contrast" class="method-score">0</span>
+            </div>
+            <div class="method-row">
+              <span class="method-name">Color</span>
+              <div class="method-bar-wrap"><div id="bar-color" class="method-bar"></div></div>
+              <span id="score-color" class="method-score">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How It Works ────────────────────────────────────────────── -->
+
+  <section id="how-it-works">
+    <div class="container">
+      <h2 data-i18n="methodsTitle">How It Works</h2>
+      <p style="color: var(--text-secondary);" data-i18n="methodsDescription">GlassesJS combines 6 independent detection methods, each returning a score 0–100. The final confidence is a weighted average.</p>
+
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodBridge">Bridge Edge Detection</h3>
+            <span class="method-card-weight">25%</span>
+          </div>
+          <p data-i18n="methodBridgeDesc">Horizontal Sobel edge detection on the nose bridge area. Glasses frames create strong horizontal edges where they sit on the nose.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodTemple">Temple Symmetry</h3>
+            <span class="method-card-weight">20%</span>
+          </div>
+          <p data-i18n="methodTempleDesc">Vertical edge analysis at both temples. Glasses arms create symmetric vertical edge patterns on both sides of the face.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodIris">Iris Stability</h3>
+            <span class="method-card-weight">20%</span>
+          </div>
+          <p data-i18n="methodIrisDesc">Tracks iris position variance over multiple frames. Glasses lenses refract light, causing higher variance in detected iris position.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodDepth">Z-Depth Profile</h3>
+            <span class="method-card-weight">15%</span>
+          </div>
+          <p data-i18n="methodDepthDesc">Analyzes Z-coordinate discontinuities across eye landmarks. Glasses create a false plane in front of the face.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodContrast">Local Contrast</h3>
+            <span class="method-card-weight">10%</span>
+          </div>
+          <p data-i18n="methodContrastDesc">Compares pixel contrast in the eye region vs. cheeks. Glass lenses alter local contrast through reflections and tinting.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-card-header">
+            <h3 data-i18n="methodColor">Color Anomaly</h3>
+            <span class="method-card-weight">10%</span>
+          </div>
+          <p data-i18n="methodColorDesc">Samples colors across the eye region and compares with skin baseline. Coated lenses shift color temperature.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── API Reference ───────────────────────────────────────────── -->
+
+  <section id="api">
+    <div class="container">
+      <h2 data-i18n="apiTitle">API Reference</h2>
+
+      <div class="api-tabs">
+        <button class="api-tab active" data-panel="api-lightweight" data-i18n="apiLightweight">Lightweight Mode</button>
+        <button class="api-tab" data-panel="api-standalone" data-i18n="apiStandalone">Standalone Mode</button>
+      </div>
+
+      <!-- Lightweight -->
+      <div id="api-lightweight" class="api-panel active">
+        <p data-i18n="apiLightweightDesc">You already have MediaPipe landmarks — just pass them in.</p>
+
+        <h3 data-i18n="apiSingle">Single Frame (fast)</h3>
+        <pre><code>import { GlassesDetector } from 'glassesjs';
+
+const detector = new GlassesDetector();
+const result = detector.detect(canvas, faceLandmarks);
+
+console.log(result.hasGlasses);   // true / false
+console.log(result.confidence);   // 0–100
+console.log(result.methods);      // per-method breakdown</code></pre>
+
+        <h3 style="margin-top: 2rem;" data-i18n="apiAccumulated">Accumulated (accurate)</h3>
+        <pre><code>const detector = new GlassesDetector({
+  frameBuffer: 30,
+  confidenceThreshold: 70,
+});
+
+// In your detection loop, every frame:
+detector.addFrame(canvas, faceLandmarks);
+
+// After 10+ frames:
+const result = detector.getResult();
+
+// When user changes:
+detector.reset();</code></pre>
+      </div>
+
+      <!-- Standalone -->
+      <div id="api-standalone" class="api-panel">
+        <p data-i18n="apiStandaloneDesc">Library handles MediaPipe internally. Just provide a video element.</p>
+
+        <h3 data-i18n="apiSingle">Single Frame (fast)</h3>
+        <pre><code>import { StandaloneDetector } from 'glassesjs/standalone';
+
+const detector = await StandaloneDetector.create({
+  video: myVideoElement,
+  framesForResult: 30,
+  confidenceThreshold: 70,
+});
+
+// One-shot — accumulates 30 frames, returns result:
+const result = await detector.detectOnce();
+console.log(result.hasGlasses, result.confidence);</code></pre>
+
+        <h3 style="margin-top: 2rem;" data-i18n="apiContinuous">Continuous Detection</h3>
+        <pre><code>const detector = await StandaloneDetector.create({
+  video: myVideoElement,
+  interval: 5000,    // evaluate every 5 seconds
+});
+
+// Start — callback fires every 5 seconds:
+detector.start((result) => {
+  console.log(result.hasGlasses, result.confidence);
+});
+
+// Stop when done:
+detector.stop();
+
+// Cleanup:
+detector.destroy();</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Install ─────────────────────────────────────────────────── -->
+
+  <section id="install">
+    <div class="container">
+      <h2 data-i18n="installTitle">Install</h2>
+
+      <div class="install-options">
+        <div class="install-option">
+          <h3 data-i18n="installNpm">npm</h3>
+          <pre><code>npm install glassesjs</code></pre>
+        </div>
+
+        <div class="install-option">
+          <h3 data-i18n="installCdn">CDN</h3>
+          <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/glassesjs/dist/glassesjs.min.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="install-option">
+          <h3 data-i18n="installEsm">ES Module</h3>
+          <pre><code>import { GlassesDetector } from 'glassesjs';
+import { StandaloneDetector } from 'glassesjs/standalone';</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────── -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span data-i18n="footerLicense">MIT License</span>
+        <span>·</span>
+        <a href="https://github.com/melioro/glassesjs" target="_blank" rel="noopener">GitHub</a>
+        <span>·</span>
+        <span data-i18n="footerAuthor">Pavel Horak / MELIORO Systems</span>
+      </div>
+      <p class="footer-built" data-i18n="footerBuilt">Built with math, not AI.</p>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ─────────────────────────────────────────────────── -->
+
+  <script src="js/i18n.js"></script>
+  <script src="js/demo.js"></script>
+  <script>
+    // Initialize language
+    initLang();
+  </script>
+
+</body>
+</html>

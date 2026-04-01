@@ -1,0 +1,65 @@
+{
+  "name": "glassesjs",
+  "version": "0.1.0",
+  "description": "Zero-model glasses detection for the browser. Detects whether a person is wearing glasses using webcam video frames and MediaPipe facial landmarks — no AI models, no server, no dependencies.",
+  "main": "dist/glassesjs.cjs.js",
+  "module": "dist/glassesjs.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/glassesjs.esm.js",
+      "require": "./dist/glassesjs.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./standalone": {
+      "import": "./dist/glassesjs.standalone.esm.js",
+      "require": "./dist/glassesjs.standalone.cjs.js",
+      "types": "./dist/standalone.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/build.js",
+    "dev": "tsc --watch",
+    "test": "node test/benchmark.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "glasses",
+    "detection",
+    "mediapipe",
+    "face",
+    "landmarks",
+    "webcam",
+    "browser",
+    "computer-vision",
+    "no-ai",
+    "lightweight"
+  ],
+  "author": "Pavel Horak / MELIORO Systems",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melioro/glassesjs"
+  },
+  "homepage": "https://glassesjs.com",
+  "peerDependencies": {
+    "@mediapipe/tasks-vision": ">=0.10.0"
+  },
+  "peerDependenciesMeta": {
+    "@mediapipe/tasks-vision": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "esbuild": "^0.20.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
