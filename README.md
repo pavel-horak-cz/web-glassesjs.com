@@ -5,7 +5,7 @@
 Detects whether a person is wearing glasses using webcam video frames and [MediaPipe FaceLandmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker) facial landmarks — no AI models, no server, no heavy dependencies. Pure mathematical and pixel analysis running entirely client-side.
 
 [![npm version](https://img.shields.io/npm/v/glassesjs.svg)](https://www.npmjs.com/package/glassesjs)
-[![license](https://img.shields.io/npm/l/glassesjs.svg)](https://github.com/melioro/glassesjs/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/glassesjs.svg)](https://github.com/MELIORO-systems/glassesjs/blob/main/LICENSE)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/glassesjs.svg)](https://bundlephobia.com/package/glassesjs)
 
 ## Why?
