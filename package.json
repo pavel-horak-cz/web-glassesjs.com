@@ -40,11 +40,11 @@
     "no-ai",
     "lightweight"
   ],
-  "author": "Pavel Horak / MELIORO Systems",
+  "author": "Pavel Horak",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MELIORO-systems/glassesjs"
+    "url": "https://github.com/pavel-horak-cz/web-glassesjs.com"
   },
   "homepage": "https://glassesjs.com",
   "peerDependencies": {
