@@ -70,7 +70,7 @@ const i18n = {
     // Footer
     footerLicense: 'MIT License',
     footerMoreProjects: 'More projects',
-    footerCopyright: '\u00A9 2026 Pavel Horak / MELIORO Systems.',
+    footerCopyright: '\u00A9 2026 Pavel Horak.',
     footerBuilt: 'Built with math, not AI.',
   },
 
@@ -139,7 +139,7 @@ const i18n = {
     // Footer
     footerLicense: 'MIT Licence',
     footerMoreProjects: 'Další projekty',
-    footerCopyright: '\u00A9 2026 Pavel Horak / MELIORO Systems.',
+    footerCopyright: '\u00A9 2026 Pavel Horak.',
     footerBuilt: 'Postaveno na matematice, ne na AI.',
   },
 };
