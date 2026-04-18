@@ -1030,7 +1030,7 @@ var StandaloneDetector = class _StandaloneDetector {
  * Detects whether a person is wearing glasses using webcam video frames
  * and MediaPipe facial landmarks — no AI models, no server, no dependencies.
  *
- * @author Pavel Horak / MELIORO Systems
+ * @author Pavel Horak
  * @license MIT
  * @see https://glassesjs.com
  */
@@ -1044,7 +1044,7 @@ var StandaloneDetector = class _StandaloneDetector {
  * - detectOnce() — accumulate N frames, return Promise with result
  * - start(callback) — continuous detection, callback every X ms
  *
- * @author Pavel Horak / MELIORO Systems
+ * @author Pavel Horak
  * @license MIT
  */
 //# sourceMappingURL=glassesjs.standalone.cjs.js.map

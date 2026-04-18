@@ -778,7 +778,7 @@ var GlassesDetector = class {
  * Detects whether a person is wearing glasses using webcam video frames
  * and MediaPipe facial landmarks — no AI models, no server, no dependencies.
  *
- * @author Pavel Horak / MELIORO Systems
+ * @author Pavel Horak
  * @license MIT
  * @see https://glassesjs.com
  */

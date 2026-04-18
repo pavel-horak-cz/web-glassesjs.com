@@ -8,7 +8,7 @@
  * - detectOnce() — accumulate N frames, return Promise with result
  * - start(callback) — continuous detection, callback every X ms
  *
- * @author Pavel Horak / MELIORO Systems
+ * @author Pavel Horak
  * @license MIT
  */
 import { GlassesDetectorConfig, DetectionResult } from './types.js';
