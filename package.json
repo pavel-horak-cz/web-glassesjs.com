@@ -1,6 +1,6 @@
 {
   "name": "glassesjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-model glasses detection for the browser. Detects whether a person is wearing glasses using webcam video frames and MediaPipe facial landmarks — no AI models, no server, no dependencies.",
   "main": "dist/glassesjs.cjs.js",
   "module": "dist/glassesjs.esm.js",
