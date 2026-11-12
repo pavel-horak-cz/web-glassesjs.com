@@ -4,6 +4,8 @@
 
 Detects whether a person is wearing glasses using webcam video frames and [MediaPipe FaceLandmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker) facial landmarks — no AI models, no server, no heavy dependencies. Pure mathematical and pixel analysis running entirely client-side.
 
+**Live demo and documentation:** https://glassesjs.com
+
 [![npm version](https://img.shields.io/npm/v/glassesjs.svg)](https://www.npmjs.com/package/glassesjs)
 [![license](https://img.shields.io/npm/l/glassesjs.svg)](https://github.com/pavel-horak-cz/web-glassesjs.com/blob/main/LICENSE)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/glassesjs.svg)](https://bundlephobia.com/package/glassesjs)
@@ -149,4 +151,12 @@ GlassesJS combines 6 independent detection methods, each returning a score 0–1
 
 ## License
 
-MIT — [Pavel Horak](https://phorak.cz)
+MIT — [Pavel Horák](https://pprojects.cz)
+
+## Author
+
+Pavel Horák
+
+- Project website and live demo: https://glassesjs.com
+- This project in the portfolio: https://pprojects.cz/#glassesjs
+- More projects, tools and experiments: https://pprojects.cz
