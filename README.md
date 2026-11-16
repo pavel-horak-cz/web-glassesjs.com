@@ -158,5 +158,5 @@ MIT — [Pavel Horák](https://pprojects.cz)
 Pavel Horák
 
 - Project website and live demo: https://glassesjs.com
-- This project in the portfolio: https://pprojects.cz/#glassesjs
+- This project in the portfolio: https://pprojects.cz/projekty/glassesjs/
 - More projects, tools and experiments: https://pprojects.cz
